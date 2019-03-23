@@ -18,14 +18,6 @@ class Counter extends React.Component {
 
   }
 
-  incrementScore = () => {
-    console.log(this);
-    this.setState(prevState => {
-      return {
-        score: prevState.score + 1
-      }
-    });
-  }
 
   render() {
     return (
@@ -41,10 +33,10 @@ class Counter extends React.Component {
 class App extends React.Component {
   state = {
     players: [
-      {name: "LDK", id: 1},
-      {name: "HONG", id: 2},
-      {name: "KIM", id: 3},
-      {name: "PARK", id: 4},
+      {name: "LDK",score:0, id: 1},
+      {name: "HONG",score:0, id: 2},
+      {name: "KIM",score:0, id: 3},
+      {name: "PARK",score:0, id: 4},
     ]
   }
 
@@ -55,6 +47,10 @@ class App extends React.Component {
     }))
   }
 
+  handleChangeScore = (id,delta) => {
+    console.log(id, delta);
+  }
+
   render() {
     return (
       <div className="scoreboard">
@@ -63,7 +59,9 @@ class App extends React.Component {
           this.state.players.map(player => (
             <Player name={player.name} key={player.id.toString()}
                     id={player.id}
-                    handleRemovePlayer={this.handleRemovePlayer}/>
+                    score={player.score}
+                    handleRemovePlayer={this.handleRemovePlayer}
+                    handleChangeScore={this.handleChangeScore}/>
           ))
         }
       </div>
