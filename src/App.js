@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import {Header} from "./components/Header";
+import {Player} from "./components/Player";
 
-const Header = (props) => {
-  console.log(props);
-  const {title, totalPlayers} = props; // destruct assignment
-  return (
-    <header>
-      <h1>{title}</h1>
-      <span className="stats">Players: {totalPlayers}</span>
-    </header>
-  )
-};
 
 class Counter extends React.Component {
   // state = {
@@ -45,18 +37,6 @@ class Counter extends React.Component {
     );
   }
 }
-
-const Player = (props) => (
-  <div className="player">
-    <span className="player-name">
-      <button className="remove-player" onClick={()=> props.handleRemovePlayer(props.id)}>x</button>
-    </span>
-    <span className="player-name">
-      {props.name}
-    </span>
-    <Counter />
-  </div>
-);
 
 class App extends React.Component {
   state = {
